@@ -6,8 +6,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "check-db-connection": "node index.js check-db-connection",
-    "reset-db": "",
-    "bulk-insert": "",
+    "reset-db": "node index.js reset-db",
+    "bulk-insert": "node index.js bulk-insert",
     "get-all": ""
   },
   "keywords": [],

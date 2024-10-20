@@ -1,5 +1,6 @@
 const mongoose = require("mongoose");
 const fs = require("fs");
+
 require("dotenv").config();
 
 async function main() {
@@ -20,13 +21,19 @@ async function main() {
 
   // Define a schema for the collection
   const schema = new mongoose.Schema({}, { strict: false });
-  const Model = mongoose.model(collection, schema);
+  const MovieModel = mongoose.model(collection, schema);
 
   switch (command) {
     case "check-db-connection":
       await checkConnection();
       break;
-    // TODO: Buat logic fungsionalitas yg belum tersedia di bawah
+    case "reset-db":
+      break;
+    case "bulk-insert":
+      const data = fs.readFileSync("./seed.json");
+      const parsed = JSON.parse(data);
+      await MovieModel.insertMany(parsed);
+      break;
     default:
       throw Error("command not found");
   }
