@@ -8,7 +8,7 @@
     "check-db-connection": "node index.js check-db-connection",
     "reset-db": "node index.js reset-db",
     "bulk-insert": "node index.js bulk-insert",
-    "get-all": ""
+    "get-all": "node index.js get-all"
   },
   "keywords": [],
   "author": "",
