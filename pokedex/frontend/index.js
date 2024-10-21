@@ -20,10 +20,14 @@ async function fetchPokemon() {
 function PokemonCard(props) {
   return React.createElement(
     "div",
-    { className: "" },
-    React.createElement("img", { src: props.image, alt: props.name }),
-    React.createElement("h2", null, props.name),
-    React.createElement("p", null, `Type: ${props.types}`)
+    { className: "bg-blue-100 shadow-lg rounded-lg p-4 m-4 w-64 transition hover:scale-105" },
+    React.createElement("img", {
+      className: "mx-auto",
+      src: props.image,
+      alt: props.name
+    }),
+    React.createElement("h2", {className: "text-lg font-bold text-center"}, props.name),
+    React.createElement("p", {className: "text-center"}, `Type: ${props.types}`)
   );
 }
 
@@ -55,13 +59,13 @@ function PokemonList() {
 function App() {
   return React.createElement(
     "div",
-    { className: "" },
+    { className: "min-h-screen bg-gray-100" },
     React.createElement(
       "header",
-      { className: "" },
+      { className: "bg-blue-900 p-6 mb-6" },
       React.createElement(
         "h1",
-        { className: "text-3xl text-center font-bold underline" },
+        { className: "text-4xl text-center font-bold text-white" },
         "Pokedex"
       )
     ),
