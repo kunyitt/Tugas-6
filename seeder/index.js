@@ -78,4 +78,12 @@ async function getAll(MovieModel) {
     console.log("Error fetching movies:", err);
   }
 }
+async function restDb(MovieModel) {
+  try {
+    await MovieModel.deleteMany();
+    console.log("Database reset successful!");
+  } catch (err) {
+    console.log("Error resetting database:", err);
+  }
+}
 main();
