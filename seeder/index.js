@@ -28,20 +28,13 @@ async function main() {
       await checkConnection();
       break;
     case "reset-db":
-      await MovieModel.deleteMany();
+      await restDb(MovieModel);
       break;
     case "bulk-insert":
-      const data = fs.readFileSync("./seed.json");
-      const parsed = JSON.parse(data);
-      await MovieModel.insertMany(parsed);
+      await bulkInsert(MovieModel);
       break;
     case "get-all":
-      const movies = await MovieModel.find();
-      if (movies.length === 0){
-        console.log("Tidak ada data");
-      } else {
-        console.log(movies);
-      }
+      await getAll(MovieModel);
       break;
     default:
       throw Error("command not found");
@@ -61,5 +54,15 @@ async function checkConnection() {
   }
   console.log("check db connection ended...");
 }
-
+async function bulkInsert(MovieModel) {
+  console.log("Bulk inserting data...")
+  try {
+    const data = fs.readFileSync("./seed.json");
+    const parsed = JSON.parse(data);
+    await MovieModel.insertMany(parsed);
+    console.log("Bulk insert successful!");
+  } catch (err) {
+    console.log("Error during bulk insert:", err);
+  }
+}
 main();
