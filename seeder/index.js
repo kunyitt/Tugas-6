@@ -65,4 +65,17 @@ async function bulkInsert(MovieModel) {
     console.log("Error during bulk insert:", err);
   }
 }
+async function getAll(MovieModel) {
+  console.log("Fetching all movies...")
+  try{
+    const movies = await MovieModel.find();
+      if (movies.length === 0){
+        console.log("No data");
+      } else {
+        console.log(movies);
+      }
+  } catch (err){
+    console.log("Error fetching movies:", err);
+  }
+}
 main();
